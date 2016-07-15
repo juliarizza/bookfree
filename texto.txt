@@ -1,2 +1,2 @@
 oi
-Iniciando aprendizagem com o GitHub.
+Iniciando aprendizagem com o GitHub e utilizando da função "fork".
