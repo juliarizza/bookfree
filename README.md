@@ -1,2 +1,2 @@
 # BookFree
-Permutação de livros.
+Ferramenta de permutação de livros.
