@@ -1,6 +1,0 @@
-Olá este é o meu novo projeto
-este projeto sera feito durante o minicurso git+github
-bom dia
-oi
-
-ola
