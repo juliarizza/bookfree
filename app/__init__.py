@@ -17,4 +17,4 @@ lm = LoginManager()
 lm.init_app(app)
 
 from app.models import tables
-from app.controllers import user, book
+from app.controllers import index, user, book

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Perfil</h1>
+    <ul>
+        <li><b>Nome:</b> {{ user.name }}</li>
+        <li><b>CPF:</b> {{ user.cpf }}</li>
+        <li><b>Nascimento:</b> {{ user.birthday }}</li>
+    </ul>
+</div> <!-- /container -->
+{% endblock %}

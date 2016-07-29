@@ -1,4 +1,6 @@
 from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -10,12 +12,12 @@ class User(db.Model):
     # Info
     name = db.Column(db.String)
     cpf = db.Column(db.String)
-    gender = db.Column(db.String)# transformar
+    gender = db.Column(db.String)  # transformar
     birthday = db.Column(db.Date)
 
     books = db.relationship("Book", backref='user', lazy='dynamic')
 
-    def define_password(self, pswd):
+    def set_password(self, pswd):
         self.password = generate_password_hash(pswd)
 
     def check_password(self, pswd):
@@ -42,20 +44,24 @@ class User(db.Model):
     def __repr__(self):
         return "<User %r>" % self.email
 
+
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     # Info
     title = db.Column(db.String, nullable=False)
-    author = db.Column(db.String, nullable=False) # create an specific table
-    publisher = db.Column(db.String, nullable=False) # create an specific table
-    gender = db.Column(db.String, nullable=False) # create an specific table
+    author = db.Column(db.String, nullable=False)  # create an specific table
+    publisher = db.Column(db.String, nullable=False)  # create an specific table
+    gender = db.Column(db.String, nullable=False)  # create an specific table
     isbn = db.Column(db.String)
     quality = db.Column(db.String)
     status = db.Column(db.String)
 
+    owner = db.Column(db.Integer, db.ForeignKey(User.id))
+
     def __repr__(self):
         return "<Book %r>" % self.title
+
 
 class Borrow(db.Model):
     id = db.Column(db.Integer, primary_key=True)
