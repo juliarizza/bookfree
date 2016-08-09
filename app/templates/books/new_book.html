@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Register new book</h2>
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    <label for="inputTitle">Title</label>
+    {{ form.title(class="form-control", id="inputTitle") }}
+    <label for="inputAuthor">Author</label>
+    {{ form.author(class="form-control", id="inputAuthor") }}
+    <label for="inputPublisher">Publisher</label>
+    {{ form.publisher(class="form-control", id="inputPublisher") }}
+    <label for="inputGender">Gender</label>
+    {{ form.gender(class="form-control", id="inputGender") }}
+
+    <br />
+    <input type="submit" value="Add" />
+</form>
+{% endblock %}

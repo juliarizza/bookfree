@@ -15,7 +15,7 @@ class User(db.Model):
     gender = db.Column(db.String)  # transformar
     birthday = db.Column(db.Date)
 
-    books = db.relationship("Book", backref='user', lazy='dynamic')
+    books = db.relationship("UserBook", backref='user', lazy='dynamic')
 
     def set_password(self, pswd):
         self.password = generate_password_hash(pswd)
@@ -54,26 +54,35 @@ class Book(db.Model):
     publisher = db.Column(db.String, nullable=False)  # create an specific table
     gender = db.Column(db.String, nullable=False)  # create an specific table
     isbn = db.Column(db.String)
-    quality = db.Column(db.String)
-    status = db.Column(db.String)
-
-    owner = db.Column(db.Integer, db.ForeignKey(User.id))
 
     def __repr__(self):
         return "<Book %r>" % self.title
 
 
+class UserBook(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    book_id = db.Column(db.Integer, db.ForeignKey(Book.id), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
+    quality = db.Column(db.String)
+    status = db.Column(db.String)
+
+    book = db.relationship(Book, foreign_keys=book_id)
+    owner = db.relationship(User, foreign_keys=owner_id)
+
+    def __repr__(self):
+        return "<UserBook %r>" % self.id
+
+
 class Borrow(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
-    id_lender = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
     id_borrower = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
-    id_book = db.Column(db.Integer, db.ForeignKey(Book.id), nullable=False)
+    id_book = db.Column(db.Integer, db.ForeignKey(UserBook.id), nullable=False)
     final_date = db.Column(db.Date, nullable=False)
 
-    lender = db.relationship(User, foreign_keys=id_lender)
     borrower = db.relationship(User, foreign_keys=id_borrower)
-    book = db.relationship(Book, foreign_keys=id_book)
+    book = db.relationship(UserBook, foreign_keys=id_book)
 
     def __repr__(self):
         return "<Borrow %r>" % self.id

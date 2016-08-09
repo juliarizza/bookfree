@@ -26,12 +26,12 @@ def login():
             authorized = user.check_password(form.password.data)
             if authorized:
                 login_user(user, remember=form.remember_me.data)
-                flash(u'Login efetuado!')
+                flash(u'Logged in!')
                 return redirect(url_for('index'))
             else:
-                flash(u'E-mail ou senha incorretos!')
+                flash(u'Invalid login!')
         else:
-            flash(u'E-mail ou senha incorretos!')
+            flash(u'Invalid login!')
         return redirect(url_for("login"))
     return render_template('user/login.html',
                            form=form)
@@ -55,9 +55,9 @@ def register():
             entry.set_password(entry.password)
             db.session.add(entry)
             db.session.commit()
-            flash(u"Usuário cadastrado!")
+            flash(u"Registered!")
         else:
-            flash(u"Usuário já existe!")
+            flash(u"The user already exists!")
         return redirect(url_for('login'))
     return render_template('user/register.html',
                            form=form)
@@ -74,7 +74,7 @@ def profile(id):
 @login_required
 def edit_profile(id):
     if id != current_user.id:
-        flash(u'Você não pode editar um perfil que não é seu, espertinho!')
+        flash(u'You cannot edit a profile that is not yours!')
         return redirect(url_for('index'))
 
     user = User.query.get_or_404(id)

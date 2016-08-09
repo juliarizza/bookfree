@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>My Books</h1>
+
+<a href="{{ url_for('search') }}" class="btn btn-primary">Add book</a>
+<br /><br />
+
+{% for register in my_books %}
+<div class="row">
+<div class="panel panel-default col-xs-12 col-sm-4">
+    <div class="panel-body">
+        <h4>
+            {{ register.book.title }}<br />
+            <small>{{ register.book.author }}</small>
+        </h4>
+        <a href="{{ url_for('remove_book', id=register.id) }}" class="btn btn-sm btn-danger">Delete</a>
+    </div>
+</div>
+</div>
+{% endfor %}
+
+
+{% if not my_books %}
+    <div class="alert alert-warning" role="alert">You don't have any books yet.</div>
+{% endif %}
+
+{% endblock %}

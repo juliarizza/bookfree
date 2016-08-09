@@ -3,20 +3,20 @@
 {% block content %}
 <div class="container">
     <div class="col-xs-12 col-md-4 col-md-offset-4">
-    <h2>Editar usuário</h2>
+    <h2>Edit Profile</h2>
       <form action="" method="POST" name="register">
             {{ form.hidden_tag() }}
-            <label for="inputName">Nome</label>
-            {{ form.name(class="form-control", placeholder="Fulano Silva", id="inputName") }}
+            <label for="inputName">Name</label>
+            {{ form.name(class="form-control", placeholder="John Smith", id="inputName") }}
             <label for="inputEmail">Email</label>
             {{ form.email(class="form-control", placeholder="email@email.com", id="inputEmail") }}
             <label for="inputCPF">CPF</label>
             {{ form.cpf(class="form-control", placeholder="xxx.xxx.xxx-xx", id="inputCPF") }}
-            <label for="inputGender">Gênero</label>
+            <label for="inputGender">Gender</label>
             {{ form.gender(class="form-control", id="inputGender") }}
-            <label for="inputBirthday">Nascimento</label>
+            <label for="inputBirthday">Birthday</label>
             {{ form.birthday(class="form-control", id="inputBirthday") }}
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Salvar" />
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Save" />
       </form>
   </div>
 </div> <!-- /container -->

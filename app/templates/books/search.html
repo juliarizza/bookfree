@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Search Books</h1>
+
+
+<div class="row">
+<form class="inline-form" action="" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group col-sm-3 col-xs-10">
+        {{ form.book(class="form-control") }}
+    </div>
+    <input type="submit" class="btn" value="Search" />
+</form>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <a href="{{ url_for('new_book') }}">Register new book</a>
+    </div>
+</div>
+
+<div class="container">
+{% if books %}
+    {% for book in books %}
+    <div class="panel panel-default col-xs-12 col-sm-4">
+        <div class="panel-body">
+            <h4>
+                {{ book.title }}<br />
+                <small>{{ book.author }}</small>
+            </h4>
+            <a href="{{ url_for('add_book', id=book.id) }}" class="btn btn-sm btn-success">Add book</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+</div>
+
+{% endblock %}

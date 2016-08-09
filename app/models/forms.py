@@ -21,7 +21,7 @@ class EditUserForm(Form):
     email = StringField('email', validators=[Email()])
     cpf = StringField('cpf')
     gender = SelectField('gender',
-                         choices=[(0, 'Feminino'), (1, 'Masculino')],
+                         choices=[(0, 'Female'), (1, 'Male')],
                          coerce=int,
                          validators=[Optional()])
     birthday = DateField('birthday',
@@ -34,6 +34,10 @@ class ChangePasswordForm(Form):
     new_password = PasswordField('new_password', validators=[DataRequired()])
     new_password_repeat = PasswordField('new_password_repeat',
                                         validators=[DataRequired()])
+
+
+class SearchBook(Form):
+    book = StringField('book')
 
 
 class NewBookForm(Form):
