@@ -1,4 +1,7 @@
-__pycache__
-*.db
-*.log
+#Ignore the virtualenv folder
+flask/
+
+#Ignore binarie files
 *.pyc
+
+
