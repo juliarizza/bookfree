@@ -1,4 +1,4 @@
-# Setting up the Development Environment
+ Setting up the Development Environment
 ----
 
 #### Cloning the project
@@ -40,6 +40,4 @@ Finally to start the application...
 
 ```python run.py runserver```
 
-To leave the virtualenv...
-
-```deactivate```
+To leave the virtualenv just type ```deactivate```.
