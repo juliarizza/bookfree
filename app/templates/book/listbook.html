@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style type="text/css">
+            th{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Lista de Livros</h1>
+            
+            <table border="1">
+                <tr>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Editora</th>
+                    <th>Genero</th>
+                </tr>
+                {% for item in books: %}
+                    <tr>
+                        <td><a href="/book/{{ item.id }}">{{ item.title }}</a></td>
+                        <td>{{ item.author }}</td>
+                        <td>{{ item.publisher }}</td>
+                        <td>{{ item.gender }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+        </form>
+    </body>
+</html>

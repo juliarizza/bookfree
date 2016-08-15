@@ -4,6 +4,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     # Login
+    username = db.Column(db.String, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
 
@@ -13,7 +14,7 @@ class User(db.Model):
     gender = db.Column(db.String)# transformar
     birthday = db.Column(db.Date)
 
-    books = db.relationship("Book", backref='user', lazy='dynamic')
+    #books = db.relationship("Book", backref='user', lazy='dynamic')
 
     def define_password(self, pswd):
         self.password = generate_password_hash(pswd)
@@ -51,11 +52,19 @@ class Book(db.Model):
     publisher = db.Column(db.String, nullable=False) # create an specific table
     gender = db.Column(db.String, nullable=False) # create an specific table
     isbn = db.Column(db.String)
-    quality = db.Column(db.String)
-    status = db.Column(db.String)
 
     def __repr__(self):
         return "<Book %r>" % self.title
+
+class Collection(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    id_user = db.Column(db.Integer, db.ForeignKey(User.id))
+    id_book = db.Column(db.Integer, db.ForeignKey(Book.id))
+    quality = db.Column(db.String)
+    status = db.Column(db.String)
+
+    book = db.relationship(Book, foreign_keys=id_book)
+    user = db.relationship(User, foreign_keys=id_user)
 
 class Borrow(db.Model):
     id = db.Column(db.Integer, primary_key=True)

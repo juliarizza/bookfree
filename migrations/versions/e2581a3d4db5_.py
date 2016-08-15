@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: cd93a99edee4
+Revision ID: e2581a3d4db5
 Revises: None
-Create Date: 2016-07-22 10:36:15.181208
+Create Date: 2016-08-14 22:25:03.912294
 
 """
 
 # revision identifiers, used by Alembic.
-revision = 'cd93a99edee4'
+revision = 'e2581a3d4db5'
 down_revision = None
 
 from alembic import op
@@ -27,6 +27,7 @@ def upgrade():
     )
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('username', sa.String(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('password', sa.String(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
@@ -42,9 +43,9 @@ def upgrade():
     sa.Column('id_borrower', sa.Integer(), nullable=False),
     sa.Column('id_book', sa.Integer(), nullable=False),
     sa.Column('final_date', sa.Date(), nullable=False),
-    sa.ForeignKeyConstraint(['id_book'], ['book.id'], ),
-    sa.ForeignKeyConstraint(['id_borrower'], ['user.id'], ),
-    sa.ForeignKeyConstraint(['id_lender'], ['user.id'], ),
+    sa.ForeignKeyConstraint(['id_book'], [u'book.id'], ),
+    sa.ForeignKeyConstraint(['id_borrower'], [u'user.id'], ),
+    sa.ForeignKeyConstraint(['id_lender'], [u'user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     ### end Alembic commands ###
