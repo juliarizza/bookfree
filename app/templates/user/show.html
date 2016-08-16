@@ -1,0 +1,16 @@
+{% extends '../base.html' %}
+
+{% block content %}
+    <h1>Exibir Usuario</h1>
+    <b>Nome:</b> {{ user.name }} </br>
+    <b>Gender:</b> {{ user.gender }} </br>
+    <table border="1">
+    {% for item in collection_list: %}
+        <tr>
+            <td><a href="/book/{{ item.Book.id }}">{{ item.Book.title }}</td>
+            <td>{{ item.Book.author }}</td>
+            <td>{{ item.Collection.quality }}</td>
+            <td>{{ item.Collection.status }}</td>
+        </tr>
+    {% endfor%}
+    </table>

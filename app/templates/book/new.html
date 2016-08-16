@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <h2>Registrar</h2>
+      <form action="" method="POST" name="create">
+            {{ form.hidden_tag() }}
+            
+            <label for="inputTitle">Titulo</label>
+            {{ form.title(class="form-control", placeholder="Revolução dos Bichos", id="inputTitle") }}
+
+            <label for="inputAuthor">Autor</label>
+            {{ form.author(class="form-control", placeholder="George Orwell", id="inputAuthor") }}
+
+            <label for="inputPublisher">Editora</label>
+            {{ form.publisher(class="form-control", placeholder="Pearson", id="inputPublisher") }}
+
+            <label for="inputGender">Gênero</label>
+            {{ form.gender(class="form-control", placeholder="Drama", id="inputGender") }}
+            
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Cadastrar" />
+      </form>
+  </div>
+</div> <!-- /container -->
+{% endblock %}

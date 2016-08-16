@@ -1,16 +1,10 @@
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <style type="text/css">
-            th{
-                font-weight: bold;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Lista de Livros</h1>
-            
-            <table border="1">
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <h1>Livros</h1><a href="{{ url_for('new_book') }}">Novo</a>
+        <table class="table">
                 <tr>
                     <th>Titulo</th>
                     <th>Autor</th>
@@ -25,8 +19,7 @@
                         <td>{{ item.gender }}</td>
                     </tr>
                 {% endfor %}
-            </table>
-            
-        </form>
-    </body>
-</html>
+        </table>
+    </div>
+</div> <!-- /container -->
+{% endblock %}

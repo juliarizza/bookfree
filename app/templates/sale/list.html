@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <h1>Minhas vendas</h1><a href="{{ url_for('new_collection') }}">Novo</a>
+        <table class="table">
+                <tr>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Conservação</th>
+                    <th>Status</th>
+                    <th>Preço</th>
+                    <th>Envio</th>
+                    <th>Ações</th>
+                </tr>
+                {% for item in collection_list: %}
+                    <tr>
+                        <td><a href="{{ url_for('show_book', id_book=item.Book.id) }}">{{ item.Book.title }}</a></td>
+                        <td>{{ item.Book.author }}</td>
+                        <td>{{ item.Collection.quality }}</td>
+                        <td>{{ item.Collection.status }}</td>
+                        <td>R$ {{ item.Sale.price }}</td>
+                        <td>R$ {{ item.Sale.shipping }}</td>
+                        <td> 
+                            <a href="{{ url_for('edit_sale', id=item.Sale.id_collection) }}">
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                            </a>
+                            <a href="{{ url_for('delete_collection', id_collection=item.Sale.id_collection) }}">
+                                <button type="button" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </div>
+</div> <!-- /container -->
+{% endblock %}

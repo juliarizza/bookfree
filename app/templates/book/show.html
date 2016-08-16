@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <h1>Livro</h1>
+        <ul>
+
+            <form action="" method="POST" name="create">
+                {{ form.hidden_tag() }}
+                
+                <label for="inputTitle">Titulo</label>
+                {{ form.title(class="form-control", value=book.title, id="inputTitle", disabled=true) }}
+
+
+                <label for="inputTitle">Autor</label>
+                {{ form.title(class="form-control", value=book.author, id="inputTitle", disabled=true) }}
+
+
+                <label for="inputTitle">Editora</label>
+                {{ form.title(class="form-control", value=book.publisher, id="inputTitle", disabled=true) }}
+
+
+                <label for="inputTitle">Gênero</label>
+                {{ form.title(class="form-control", value=book.gender, id="inputGender", disabled=true) }}
+                
+            </form>
+        </ul>
+    </div>
+</div> <!-- /container -->
+{% endblock %}
+
+
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style type="text/css">
+            th{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        
+    </body>
+</html>

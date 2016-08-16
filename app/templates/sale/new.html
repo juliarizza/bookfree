@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <h2>Registrar</h2>
+      <form action="" method="POST" name="create">
+            {{ form.hidden_tag() }}
+            
+            <label for="inputBook">Livro</label>
+            {{ form.book(class="form-control", id="inputBook", disabled="disabled") }}
+
+            <label for="inputPrice">Preço</label>
+            {{ form.price(class="form-control", placeholder="10.00", id="inputPrice", value=sale.price) }}
+
+            <label for="inputStatus">Frete</label>
+            {{ form.shipping(class="form-control", placeholder="5.00", id="inputShipping", value=sale.shipping) }}
+
+            <label for="inputStatus">Descrição</label>
+            {{ form.description(class="form-control", placeholder="Livro novo, 1 ano de uso...", id="inputDescription", rows='5',cols='100') }}
+
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Salvar" />
+      </form>
+  </div>
+</div> <!-- /container -->
+{% endblock %}
