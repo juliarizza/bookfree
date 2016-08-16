@@ -2,7 +2,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
-from flask_script import Manager
+from flask_script import Manager, Server
 from flask_login import LoginManager
 
 import sys
@@ -17,6 +17,11 @@ migrate = Migrate(app, db)
 
 manager = Manager(app)
 manager.add_command("db", MigrateCommand)
+
+manager.add_command("runserverproduction", Server(
+    use_debugger = True,
+    use_reloader = True,
+    host = '0.0.0.0'))
 
 lm = LoginManager()
 lm.init_app(app)
