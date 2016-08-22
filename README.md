@@ -66,3 +66,7 @@ Para instalar e executar, siga os seguintes passos:
     $ deactivate
     ```
     
+# Apoio
+Material de apoio do Flask:
+* [Flask Mega Tutorial](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+* [Documentação](http://flask.pocoo.org/)
