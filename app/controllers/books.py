@@ -6,14 +6,14 @@ from app.models.forms import SearchBook, NewBookForm
 from app.models.tables import Book, UserBook
 
 
-@app.route('/my_books/<int:id>')
+@app.route('/books/<int:id>')
 def my_books(id):
     my_books = UserBook.query.filter_by(owner_id=id).all()
     return render_template('books/my_books.html',
                            my_books=my_books)
 
 
-@app.route('/search', methods=["GET", "POST"])
+@app.route('/books/search', methods=["GET", "POST"])
 def search():
     books = None
     form = SearchBook()
@@ -26,7 +26,7 @@ def search():
                            books=books)
 
 
-@app.route("/new_book", methods=["GET", "POST"])
+@app.route("/books/new", methods=["GET", "POST"])
 def new_book():
     form = NewBookForm()
     if form.validate_on_submit():
@@ -44,7 +44,7 @@ def new_book():
                            form=form)
 
 
-@app.route('/add_book/<int:id>')
+@app.route('/books/add/<int:id>')
 def add_book(id):
     register = UserBook.query.filter_by(book_id=id, owner_id=current_user.id).first()
     if not register:
@@ -61,7 +61,7 @@ def add_book(id):
         return redirect(url_for('search'))
 
 
-@app.route('/remove_book/<int:id>')
+@app.route('/books/remove/<int:id>')
 def remove_book(id):
     book = UserBook.query.get(id)
     db.session.delete(book)
