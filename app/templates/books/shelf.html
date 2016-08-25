@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>My Books</h1>
+
+<a href="{{ url_for('search') }}" class="btn btn-primary">Add book</a>
+<br /><br />
+{% if shelf %}
+    {% for register in my_books %}
+    <div class="row">
+    <div class="panel panel-default col-xs-12 col-sm-4">
+        <div class="panel-body">
+            <h4>
+                {{ register.title }}<br />
+                <small>{{ register.author }}</small>
+            </h4>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+    
+    {% if not my_books %}
+        <div class="alert alert-warning" role="alert">You don't have any books yet.</div>
+    {% endif %}
+    
+{% else %}
+    {% for register in my_shelves %}
+    <div class="row">
+    <div class="panel panel-default col-xs-12 col-sm-4">
+        <div class="panel-body">
+            <h4>
+            {{ register.genre }}<br />
+            </h4>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+    
+    
+    {% if not my_shelves %}
+        <div class="alert alert-warning" role="alert">You don't have any shelves yet.</div>
+    {% endif %}
+    
+{% endif %} 
+
+
+{% endblock %}
