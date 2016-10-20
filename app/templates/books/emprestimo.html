@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+  <div class="container">
+
+    <h2>Emprestimo</h2>
+     
+    
+
+    <div class="panel panel-default col-xs-12 col-sm-4">
+      <div class="panel-body">
+        <h3>
+          {{ book.title }}<br/>
+        </h3>
+        <h4>
+          <small>
+            Author:   {{ book.author }}<br>
+            Publisher: {{ book.publisher }}<br>
+            Gender:  {{ book.gender }}<br>
+          </small>
+        </h4>
+      </div>
+    </div>
+      
+    <br>
+    
+  </div>
+    <!-- ACORDION Retida fisica / Correios-->
+    <div class="panel-group" id="accordion">
+        
+      <div class="panel panel-default">
+          
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Retirada Física</a>
+          </h4>
+        </div>
+
+        <div id="collapse1" class="panel-collapse collapse">
+          <div class="panel-body">INFORMAÇÕES PARA RETIRADA<br><br>
+
+          <!-- FORMULARIO RETIRADA FISICA -->
+            <div class="row">
+            
+              <form class="inline-form" action="" method="POST">
+                  {{ formLocal.hidden_tag() }}
+                  
+                  <div class="form-group col-sm-3 col-xs-10">    
+                      Data de Retirada<br>{{ formLocal.date(class="form-control") }} <br>
+                      Local de Retirada<br>{{ formLocal.local(class="form-control") }} <br>
+                  </div>
+
+                  
+                </div>
+                <a href="http://bing.com.br" class="btn btn-info" role="button" >Solicitar</a>
+
+              </form>    
+
+            </div>
+            <br>            
+
+          </div>
+        </div>
+       
+       <!-- ACORDION ENVIO CORREIOS -->
+        <div class="panel panel-default">
+         
+          <div class="panel-heading">
+            <h4 class="panel-title">   
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Envio por Correios</a>
+            </h4>
+          </div>
+       
+
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">ENDEREÇO DE ENTREGA<br><br>
+
+            <!-- FORMULÁRIO CORREIOS -->
+             <div class="row">
+            
+              <form class="inline-form" action="" method="POST">
+                  {{ formLocal.hidden_tag() }}
+                  
+                  <div class="form-group col-sm-3 col-xs-10">
+                      Logadouro<br>{{ formCorreios.logadouro(class="form-control") }} <br>
+                      Número<br>{{ formCorreios.numero(class="form-control") }} <br>
+                      Complemento<br>{{ formCorreios.complemento(class="form-control") }} <br>
+                      CEP<br>{{ formCorreios.cep(class="form-control") }} <br><br>
+
+                      <p> A estima de preço do envio pode ser feita através do link: <a color:blue  href="http://www2.correios.com.br/sistemas/precosPrazos/" target="_blank">ESTIMATIVA</href="http:></p>
+                  </div>
+
+                  
+                </div>
+                <a href="http://bing.com.br" class="btn btn-info" role="button" >Enviar</a>
+
+              </form>    
+
+            </di
+
+
+          </div>
+        
+        </div>
+      </div>
+        
+  	</div>
+    <br><br>
+
+  
+  
+
+{% endblock %}
